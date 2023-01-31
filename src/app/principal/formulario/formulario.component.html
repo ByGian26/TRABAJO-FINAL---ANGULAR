@@ -1,0 +1,17 @@
+<h2 class="text-center">Registro de Usuarios</h2>
+<section class="container-sm">
+    <form (ngSubmit)="onSubmit()">
+      <section class="form-group m-2">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" required [(ngModel)]="datos.name" name="name">
+      </section>
+
+      <section class="form-group m-2">
+      <label for="username">Username</label>
+      <input type="text" class="form-control" id="username" [(ngModel)]="datos.username" name="username">
+      </section>
+      <section class="form-group m-2">
+        <input type="submit" class="btn btn-success" value="Submit">
+      </section>
+    </form>
+</section>
