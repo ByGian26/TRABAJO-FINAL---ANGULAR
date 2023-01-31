@@ -8,7 +8,7 @@
   height: 100%;
   align-items: center;
   text-align: center;
-  color: rgb(19, 16, 185);
+  color: rgb(189, 189, 241);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -26,7 +26,7 @@ svg {
 
 .text-copy {
     fill: none;
-    stroke: rgb(133, 235, 16);
+    stroke: rgb(131, 243, 4);
     stroke-dasharray: 6% 29%;
     stroke-width: 5px;
     stroke-dashoffset: 0%;
@@ -34,12 +34,12 @@ svg {
 }
 
 .text-copy:nth-child(1){
-	stroke: #c8eb05;
+	stroke: #33eb05;
 	animation-delay: -1;
 }
 
 .text-copy:nth-child(2){
-	stroke: #ffffff;
+	stroke: #ffe603;
 	animation-delay: -2s;
 }
 
