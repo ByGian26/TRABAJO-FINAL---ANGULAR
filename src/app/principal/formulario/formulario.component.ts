@@ -13,7 +13,7 @@ export class FormularioComponent {
     constructor(private userService: UserservicesService){}
 
     // Crear objeto que se evniara a al api
-    datos: Users = {id: '', name: '', username:''};
+    datos: Users = {id: '', name: '', username:'', email:'', phone:'', website:''};
 
     onSubmit(){
     this.userService.postUser(this.datos).subscribe(

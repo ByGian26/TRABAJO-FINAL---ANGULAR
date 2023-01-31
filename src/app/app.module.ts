@@ -7,6 +7,7 @@ import { PrincipalModule } from './principal/principal.module';
 
 import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
 import { UserinterceptorService } from './services/userinterceptor.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { UserinterceptorService } from './services/userinterceptor.service';
     BrowserModule,
     AppRoutingModule,
     PrincipalModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [
     {
