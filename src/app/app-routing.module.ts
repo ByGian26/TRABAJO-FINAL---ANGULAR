@@ -10,18 +10,20 @@ import { LoginComponent } from './principal/login/login.component';
 import { VistaComponent } from './principal/vista/vista.component';
 
 const routes: Routes = [
-  {path: 'vista', component: VistaComponent},
-  {path: 'formulario', component: FormularioComponent, canActivate: [CanactivateGuard]},
-  {path: 'home', component: HomeComponent, canActivate: [CanactivateGuard]},
+  { path: 'vista', component: VistaComponent, canActivate: [CanactivateGuard] },
+  {
+    path: 'formulario',
+    component: FormularioComponent,
+    canActivate: [CanactivateGuard],
+  },
+  { path: 'home', component: HomeComponent, canActivate: [CanactivateGuard] },
 
-  {path: '', component: LoginComponent },
-  {path: 'login', component: LoginComponent },
-
-
+  { path: '', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
