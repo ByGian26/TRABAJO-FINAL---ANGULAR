@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Users } from 'src/app/models/users';
 import { UserservicesService } from 'src/app/services/userservices.service';
+import { DialogFormComponent } from '../dialog-form/dialog-form.component';
 
 @Component({
   selector: 'app-formulario',
@@ -8,40 +11,27 @@ import { UserservicesService } from 'src/app/services/userservices.service';
   styleUrls: ['./formulario.component.css'],
 })
 export class FormularioComponent {
-  //Crear instancia de UserServices
-  constructor(private userService: UserservicesService) {}
+  form: FormGroup;
 
-  // Crear objeto que se evniara a al api
-  datos = { nombre: '', email: '', mensaje: '' };
-  errorNombre = '';
-  errorEmail = '';
-  errorMensaje = '';
-
-  // funacion de validar formulario retorna true si es valido
-  validarFormulario() {
-    let valido = true;
-    if (this.datos.nombre == '') {
-      this.errorNombre = 'El nombre es requerido';
-      valido = false;
-    } else {
-      this.errorNombre = '';
-    }
-    if (this.datos.email == '') {
-      this.errorEmail = 'El email es requerido';
-      valido = false;
-    } else {
-      this.errorEmail = '';
-    }
-    if (this.datos.mensaje == '') {
-      this.errorMensaje = 'El mensaje es requerido';
-      valido = false;
-    } else {
-      this.errorMensaje = '';
-    }
-    return valido;
+  constructor(private formBuilder: FormBuilder, public dialog: MatDialog) {
+    this.form = this.formBuilder.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      message: ['', Validators.required],
+    });
   }
 
-  enviarFormulario() {
-    console.log(this.datos);
+  enviar() {
+    // validar formulario
+    if (this.form.valid) {
+      this.dialog.open(DialogFormComponent, {
+        width: '250px',
+        enterAnimationDuration: '1000ms',
+        exitAnimationDuration: '1000ms',
+      });
+      this.form.reset();
+    } else {
+      alert('Ocurrio un error');
+    }
   }
 }

@@ -1,53 +1,77 @@
 <section class="contenedor__principal container-sm">
   <section class="contenedor container-sm">
     <h1 class="text-center my-2">Formulario de contacto</h1>
-    <form class="form" (ngSubmit)="enviarFormulario()" #formulario="ngForm">
-      <section class="form-group my-2">
-        <label class="my-2" for="name">Name</label>
+    <form class="form" [formGroup]="form">
+      <section class="form-group">
+        <label class="my-2" for="name">Nombre</label>
         <input
           type="text"
           class="form-control"
           id="name"
-          required
-          [(ngModel)]="datos.nombre"
-          name="name"
-          required="true"
+          formControlName="name"
         />
+        <p>
+          <small
+            *ngIf="
+              form.get('name')?.hasError('required') &&
+              form.get('name')?.touched
+            "
+            class="text-danger"
+          >
+            El nombre es obligatorio
+          </small>
+        </p>
       </section>
-
-      <section class="form-group my-2">
+      <section class="form-group">
         <label class="my-2" for="email">Email</label>
         <input
-          type="text"
+          type="email"
           class="form-control"
           id="email"
-          [(ngModel)]="datos.email"
-          name="email"
-          required="true"
+          formControlName="email"
         />
+        <p>
+          <small
+            *ngIf="
+              form.get('email')?.hasError('required') &&
+              form.get('email')?.touched
+            "
+            class="text-danger"
+          >
+            El email es obligatorio
+          </small>
+          <small
+            *ngIf="form.get('email')?.hasError('email')"
+            class="text-danger"
+          >
+            El email no es valido
+          </small>
+        </p>
       </section>
-
-      <section class="form-group my-2">
+      <section class="form-group">
         <label class="my-2" for="mensaje">Mensaje</label>
         <textarea
           class="form-control"
           id="mensaje"
           rows="3"
-          [(ngModel)]="datos.mensaje"
-          name="mensaje"
-          required="true"
+          formControlName="message"
         ></textarea>
+        <p>
+          <small
+            *ngIf="
+              form.get('message')?.hasError('required') &&
+              form.get('message')?.touched
+            "
+            class="text-danger"
+          >
+            El mensaje es obligatorio
+          </small>
+        </p>
       </section>
-      <section class="form-group my-4">
-        <button
-          mat-raised-button
-          color="warn"
-          style="width: 100%"
-          type="submit"
-        >
-          Enviar
-        </button>
-      </section>
+      <!-- onclic -->
+      <button mat-raised-button color="warn" [disabled]="form.invalid" style="width: 100%" (click)="enviar()">
+        Enviar
+      </button>
     </form>
   </section>
 </section>
